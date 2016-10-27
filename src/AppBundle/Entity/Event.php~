@@ -1,0 +1,80 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Event
+ *
+ * @ORM\Table(name="event")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EventRepository")
+ */
+class Event
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="events")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id"))
+     */
+    private $category;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="details", type="string", length=255)
+     */
+    private $details;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="day", type="datetime")
+     */
+    private $day;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="street_address", type="string", length=255)
+     */
+    private $streetAddress;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=255)
+     */
+    private $city;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="zipcode", type="string", length=255)
+     */
+    private $zipcode;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="create_date", type="datetime")
+     */
+    private $createDate;
+}
